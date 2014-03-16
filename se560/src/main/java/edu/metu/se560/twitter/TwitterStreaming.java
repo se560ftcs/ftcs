@@ -35,7 +35,7 @@ public class TwitterStreaming {
     BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
     StatusesFilterEndpoint endpoint = new StatusesFilterEndpoint();
     // add some track terms
-    endpoint.trackTerms(Lists.newArrayList("sÃ¼per lig", "futbol", "maÃ§", "fener","cimbom","sarÄ± kanarya","kara kartal", "ts", "bordo mavi", "sarÄ± lacivert", "siyah beyaz", "sarÄ± kÄ±rmÄ±zÄ±", "bjk", "gs", "futbol", "fenerbahÃ§e", "galatasaray", "beÅŸiktaÅŸ", "trabzonspor"));
+    endpoint.trackTerms(Lists.newArrayList("sŸper lig", "futbol", "ma", "fener","cimbom","sarİ kanarya","kara kartal", "ts", "bordo mavi", "sarİ lacivert", "siyah beyaz", "sarİ kİrmİzİ", "bjk", "gs", "futbol", "fenerbahe", "galatasaray", "beÅŸiktaÅŸ", "trabzonspor"));
     //endpoint.trackTerms(Lists.newArrayList("a","e","i","o","u","Ä±","Ã¼","Ã¶"));
     endpoint.languages(Lists.newArrayList("tr"));
 
