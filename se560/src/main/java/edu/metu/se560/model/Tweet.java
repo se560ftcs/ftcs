@@ -69,7 +69,7 @@ public class Tweet {
 	private String userLocation;
 	private Integer followersCount;
 	private String friendsCount;
-	
+	//burak bi þeyler ekledi
 	public Tweet() {
 	}
 	
