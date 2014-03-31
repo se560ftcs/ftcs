@@ -32,7 +32,7 @@ import com.twitter.hbc.httpclient.auth.OAuth1;
 public class TwitterStreaming {
 
   public void oauth(String consumerKey, String consumerSecret, String token, String secret) throws InterruptedException {
-    BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
+    BlockingQueue<String> queue = new LinkedBlockingQueue<String>(15000);
     StatusesFilterEndpoint endpoint = new StatusesFilterEndpoint();
     // add some track terms
     endpoint.trackTerms(Lists.newArrayList("süper lig", "futbol", "maç", "fener","cimbom","sar› kanarya","kara kartal", "ts", "bordo mavi", "sar› lacivert", "siyah beyaz", "sar› k›rm›z›", "bjk", "gs", "futbol", "fenerbahçe", "galatasaray", "be≈üikta≈ü", "trabzonspor"));

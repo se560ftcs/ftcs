@@ -67,8 +67,8 @@ public class ClusterDispatcher {
 		}
 	}
 
-	private Collection<Tweet> readFromFile(String fileName) throws Exception {
-		Collection<Tweet> result = new ArrayList<Tweet>();
+	public static List<Tweet> readFromFile(String fileName) throws Exception {
+		List<Tweet> result = new ArrayList<Tweet>();
 		BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
 		String line;
 		while ((line = br.readLine()) != null) {

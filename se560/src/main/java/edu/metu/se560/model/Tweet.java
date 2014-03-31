@@ -73,20 +73,54 @@ public class Tweet {
 	public Tweet() {
 	}
 	
+	/**
+	 *   Ç     ç     ⁄     €     ‹     ›     Ö     ö     ﬁ     ﬂ     Ü     ü
+Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
+	 */
+	String[] strs = {
+	"ç","\\u00e7",
+	"€","\\u011f",
+	"›","\\u0131",
+	"ﬂ","\\u015f",
+	"ö","\\u00f6",
+	"ü","\\u00fc",
+	"Ç","\\u00c7",
+	"⁄","\\u011e",
+	"‹","\\u0130",
+	"ﬁ","\\u015e",
+	"Ö","\\u00d6",
+	"Ü","\\u00dc"
+	};
+	private String toTr(String str) {
+		for (int i=0;i<strs.length/2;i++) {
+			String from = strs[i*2+1];
+			String to = strs[i*2];
+			while (str.contains(from)) {
+				str = str.replace(from, to);
+			}
+		}
+		return str;
+	}
+
 	public Tweet(String line) {
 		this.setId(Utils.parseBetween(line, "\"id\":", ","));
 		this.setIdStr(Utils.parseBetween(line, "\"id_str\":\"", "\""));
 		this.setCreatedAt(Utils.parseBetween(line, "\"created_at\":\"", "\""));
 		text = Utils.parseBetween(line, "\"text\":\"", "\",");
-		text = text.replace("\\\""," ").replace("  "," ");
-		
+		text = toTr(text.replace("\\\""," ").replace("  "," "));
+		text = removeWords(text);
 		String[] words = text.split(" ");
 		for(String w: words) {
 			this.getWords().add(w);
 		}
 		this.setUserId(Utils.parseBetween(line, "\"user\":{\"id\":", ","));
 		this.setUserLocation(Utils.parseBetween(line, "\"location\":\"", "\","));
-		System.out.println(this.toString());
+		//System.out.println(this.toString());
+	}
+
+	private String removeWords(String txt) {
+		txt = txt.replaceAll("RT ", "");
+		return txt;
 	}
 
 	public String getId() {
@@ -173,8 +207,12 @@ public class Tweet {
 	
 	
 	public String toString() {
-		return "id:"+this.getId()+", text:"+this.text;
+		//return "id:"+this.getId()+", text:"+this.text;
+		return this.getId()+"\tX\t"+this.text;
 	}
 	
+	public String getDescription() {
+		return this.text;
+	}
 
 }
