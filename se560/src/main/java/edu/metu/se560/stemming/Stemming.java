@@ -21,7 +21,7 @@ public class Stemming {
 
     public String parse(String word) {
         List<MorphParse> parses = parser.parse(word.toLowerCase(TurkishLocale));
-        String root = null;
+        String root = word;
         if(parses.size() > 0){
         	MorphParse morphParse = parses.get(0);
         	root = morphParse.getLemma();
