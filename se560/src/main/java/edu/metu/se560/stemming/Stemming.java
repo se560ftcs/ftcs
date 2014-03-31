@@ -7,26 +7,23 @@ import java.io.IOException;
 import java.util.List;
 
 public class Stemming {
-    TurkishMorphParser parser;
+    private TurkishMorphParser parser;
 
-    public Stemming(TurkishMorphParser parser) {
-        this.parser = parser;
+    public Stemming() {
+        try {
+			this.parser = TurkishMorphParser.createWithDefaults();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
-    public void parse(String word) {
-        System.out.println("Word = " + word);
-
-        System.out.println("Parses: ");
+    public String parse(String word) {
         List<MorphParse> parses = parser.parse(word);
-        for (MorphParse parse : parses) {
-            System.out.println(parse.formatLong());
-            System.out.println("\tStems = " + parse.getStems());
-            System.out.println("\tLemmas = " + parse.getLemmas());
+        String root = null;
+        if(parses.size() > 0){
+        	MorphParse morphParse = parses.get(0);
+        	root = morphParse.getLemma();
         }
-    }
-
-    public static void main(String[] args) throws IOException {
-        TurkishMorphParser parser = TurkishMorphParser.createWithDefaults();
-        new Stemming(parser).parse("kitabımızsa");
+    	return root;
     }
 }
