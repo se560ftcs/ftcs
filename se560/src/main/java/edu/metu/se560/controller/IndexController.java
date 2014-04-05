@@ -11,9 +11,13 @@ public class IndexController {
 	
 	@RequestMapping("/list/cluster")
 	@ResponseBody
-	public String login(HttpSession session) { 
+	public String listClusterData(HttpSession session) { 
 		
-        return ""; 
+		String jsonData = "";
+		
+		
+		
+        return jsonData; 
     }
 	
 }
