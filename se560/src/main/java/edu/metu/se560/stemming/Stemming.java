@@ -6,7 +6,7 @@ import zemberek.morphology.parser.MorphParse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
+ 
 public class Stemming {
 	private static Locale TurkishLocale = new Locale("tr","TR");
 	private TurkishMorphParser parser;
