@@ -1,0 +1,16 @@
+{
+     "name": "cluster",
+     "children": [
+      {"name": "Galatasaray", "size": 56},
+      {"name": "5.hakem", "size": 56},
+      {"name": "Kartal", "size": 23},
+      {"name": "Fb", "size": 47},
+      {"name": "Kanarya", "size": 56},
+      {"name": "aslan", "size": 23},
+      {"name": "Cimbom", "size": 47},
+      {"name": "Cihan", "size": 56},
+      {"name": "Sabri", "size": 23},
+      {"name": "saha", "size": 47},
+      {"name": "ofsayt", "size": 23} 
+     ]
+ }
