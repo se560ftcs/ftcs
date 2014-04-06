@@ -38,7 +38,7 @@ public class ClusteringService extends Thread {
 					addToClustering(tweet);
 				}
 				//System.out.println("Added tweet to clustering: "+ line);
-				Thread.sleep(1); //yava�� ilerlesin g��relim
+				Thread.sleep(1); //yava������������������ ilerlesin g������������������relim
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class ClusteringService extends Thread {
 			}
 		}
 		initOk = true;
-	    //En yak��n cluster'a ekle
+	    //En yak������������������n cluster'a ekle
 		int maxSimilarityIndex=-1;
 	    double maxSimilarity=0;
 	    
@@ -101,7 +101,7 @@ public class ClusteringService extends Thread {
 		result.append("\", \"children\": [");
 		for(int i=0;i<numberOfClusters && i<listCopy.size();i++) {
 			Cluster c = listCopy.get(i);
-			
+			if (c.getPrototype() != null) {
 			result.append(
 					"{\"name\": \""+
 							c.getPrototype().getDescription()
@@ -109,10 +109,10 @@ public class ClusteringService extends Thread {
 							c.getTweets().size()
 							+"}"
 					);
-			if (i<numberOfClusters-1) {
-				result.append(",");
+			result.append(",");
 			}
 		}
+		result.deleteCharAt(result.length()-1); // , sil
 		result.append("]}");
 		return result.toString();
 	}
