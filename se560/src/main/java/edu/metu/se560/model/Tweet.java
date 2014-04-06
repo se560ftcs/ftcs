@@ -63,33 +63,29 @@ public class Tweet {
 	private String idStr;
 	private String createdAt;
 	private String text;
-	private Set<String> words = new HashSet<String>(); //Text alan�ndaki kelimeler stem bulunup bu set'e doldurulacak
+	private Set<String> words = new HashSet<String>(); //Text alanindaki kelimeler stem bulunup bu set'e doldurulacak
 	private String source;
 	private String userId;
 	private String userLocation;
 	private Integer followersCount;
 	private String friendsCount;
-	//burak bi �eyler ekledi
+	//burak bi seyler ekledi
 	public Tweet() {
 	}
 	
-	/**
-	 *   �     �     �     �     �     �     �     �     �     �     �     �
-Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
-	 */
 	String[] strs = {
-	"�","\\u00e7",
-	"�","\\u011f",
-	"�","\\u0131",
-	"�","\\u015f",
-	"�","\\u00f6",
-	"�","\\u00fc",
-	"�","\\u00c7",
-	"�","\\u011e",
-	"�","\\u0130",
-	"�","\\u015e",
-	"�","\\u00d6",
-	"�","\\u00dc"
+			"ç","\\u00e7",
+			"ğ","\\u011f",
+			"ı","\\u0131",
+			"ş","\\u015f",
+			"ö","\\u00f6",
+			"ü","\\u00fc",
+			"Ç","\\u00c7",
+			"Ğ","\\u011e",
+			"İ","\\u0130",
+			"Ş","\\u015e",
+			"Ö","\\u00d6",
+			"Ü","\\u00dc"
 	};
 	private String toTr(String str) {
 		for (int i=0;i<strs.length/2;i++) {
@@ -119,7 +115,15 @@ Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
 	}
 
 	private String removeWords(String txt) {
-		txt = txt.replaceAll("RT ", "");
+		txt = txt
+				.replaceAll("\\\\u\\S*", "")
+				.replaceAll("RT ", "")
+				.replaceAll("@\\S*", "")
+				.replaceAll("#\\S*", "")
+				.replaceAll(" http\\S*", "")
+				.replaceAll("\\p{P}", "")
+				
+				;
 		return txt;
 	}
 
