@@ -1,6 +1,5 @@
 package com.metu.se560.services;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,8 +12,8 @@ import edu.metu.se560.model.Tweet;
 public class ClusteringService extends Thread {
 	
 	private BlockingQueue<String> queue;
-	private List<Cluster> clusters = new ArrayList<Cluster>();
-	private Integer numberOfClusters;
+	private static List<Cluster> clusters = new ArrayList<Cluster>();
+	private static Integer numberOfClusters;
 
 	public ClusteringService(BlockingQueue<String> queue, Integer numberOfClusters) {
 		this.queue = queue;
@@ -83,7 +82,7 @@ public class ClusteringService extends Thread {
 	    }
 	}
 
-	public String getClusterString() {
+	public static String getClusterString() {
 		StringBuffer result = new StringBuffer();
 		List<Cluster> listCopy = new ArrayList<Cluster>();
 		listCopy.addAll(clusters);

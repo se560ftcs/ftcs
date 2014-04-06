@@ -5,7 +5,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name>FTCS</display-name>
-  <display-name>Scientific Chat</display-name>
+  <display-name>Football Tweets Custering System</display-name>
 	
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -22,9 +22,23 @@
   	<display-name>MainServiceServlet</display-name>
   	<servlet-name>MainServiceServlet</servlet-name>
   	<servlet-class>com.metu.se560.servlet.MainServiceServlet</servlet-class>
-  	<!--  
-	BURAYA PARAMETRELER
-  	-->
+  	  	<init-param>
+  		<param-name>consumerKey</param-name>
+  		<param-value>JlHhZVSAtUUP8gATDHO45Q</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>consumerSecret</param-name>
+  		<param-value>UYzestiqpNSOZMiQn7ykE2fM0HMUQrxsgWv6wJ8ju6U</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>token</param-name>
+  		<param-value>349505740-ggtBUGE9kCfLz3FAEld6EjXGhl1umLxz5YOtiQt1</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>secret</param-name>
+  		<param-value>r6Q5lrHpIv3JdsmA5kcdKOxmMCeKsh1BO6X3xsa3HflOr</param-value>
+  	</init-param>
+
    	<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>

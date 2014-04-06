@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.metu.se560.services.ClusteringService;
+
 @Controller
 public class IndexController {
 	
@@ -13,7 +15,7 @@ public class IndexController {
 	@ResponseBody
 	public String listClusterData(HttpSession session) { 
 		
-		String jsonData = "";
+		String jsonData = ClusteringService.getClusterString();
 		
 		
 		

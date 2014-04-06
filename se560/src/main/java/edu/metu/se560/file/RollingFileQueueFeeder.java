@@ -12,7 +12,7 @@ import java.util.concurrent.BlockingQueue;
 import edu.metu.se560.utils.SeRollingFileWriter;
 
 public class RollingFileQueueFeeder implements Runnable {
-	private static final long SLEEP_TIME = 5*1000L; //1 dk
+	private static final long SLEEP_TIME = 120*1000L; //1 dk
 
 	BlockingQueue<String> queue;
 	Integer lowLimit;
