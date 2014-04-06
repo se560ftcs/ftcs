@@ -49,7 +49,7 @@ public class ZemberekStemmerTokenizerFactory extends ModifyTokenTokenizerFactory
     public static String stem(String in)
     {
         String result = zemberek.parse(in);
-        System.out.println(in + "->"+ result);
+       // System.out.println(in + "->"+ result);
         return result;
     }
 

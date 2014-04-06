@@ -63,33 +63,33 @@ public class Tweet {
 	private String idStr;
 	private String createdAt;
 	private String text;
-	private Set<String> words = new HashSet<String>(); //Text alanİndaki kelimeler stem bulunup bu set'e doldurulacak
+	private Set<String> words = new HashSet<String>(); //Text alanï¿½ndaki kelimeler stem bulunup bu set'e doldurulacak
 	private String source;
 	private String userId;
 	private String userLocation;
 	private Integer followersCount;
 	private String friendsCount;
-	//burak bi şeyler ekledi
+	//burak bi ï¿½eyler ekledi
 	public Tweet() {
 	}
 	
 	/**
-	 *   ‚          Ú     Û     Ü     İ     …     š     Ş     ß     †     Ÿ
+	 *   ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½     ï¿½
 Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
 	 */
 	String[] strs = {
-	"","\\u00e7",
-	"Û","\\u011f",
-	"İ","\\u0131",
-	"ß","\\u015f",
-	"š","\\u00f6",
-	"Ÿ","\\u00fc",
-	"‚","\\u00c7",
-	"Ú","\\u011e",
-	"Ü","\\u0130",
-	"Ş","\\u015e",
-	"…","\\u00d6",
-	"†","\\u00dc"
+	"ï¿½","\\u00e7",
+	"ï¿½","\\u011f",
+	"ï¿½","\\u0131",
+	"ï¿½","\\u015f",
+	"ï¿½","\\u00f6",
+	"ï¿½","\\u00fc",
+	"ï¿½","\\u00c7",
+	"ï¿½","\\u011e",
+	"ï¿½","\\u0130",
+	"ï¿½","\\u015e",
+	"ï¿½","\\u00d6",
+	"ï¿½","\\u00dc"
 	};
 	private String toTr(String str) {
 		for (int i=0;i<strs.length/2;i++) {
@@ -186,7 +186,7 @@ Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
 	public Set getProperties() {
 		Set result = new HashSet<String>();
 		result.addAll(this.getWords());
-		result.add(Utils.parseTill(this.getCreatedAt(),":")); //Bulunulan saat ile bir šnceki ve bir sonraki saat aynİ kabul edilecek ßekilde dŸzenle
+		result.add(Utils.parseTill(this.getCreatedAt(),":")); //Bulunulan saat ile bir ï¿½nceki ve bir sonraki saat aynï¿½ kabul edilecek ï¿½ekilde dï¿½zenle
 		result.add(this.getUserId());
 		result.add(this.getUserLocation());
 		
@@ -201,7 +201,7 @@ Code: 00c7  00e7  011e  011f  0130  0131  00d6  00f6  015e  015f  00dc  00fc
 	    Set<String> intersect = new HashSet<String>();
 	    intersect.addAll(this.getWords());
 	    intersect.retainAll(t2.getWords());
-	    double result = (double) (intersect.size()*1.0 / union.size()*1.0);
+	    double result = (double) ((intersect.size()*1.0) / (union.size()*1.0));
 	    return result;
 	}
 	

@@ -1,18 +1,17 @@
 package edu.metu.se560.model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Calendar;
 import java.util.List;
-
-import javax.swing.text.MutableAttributeSet;
 
 public class Cluster {
 
-	private static final int THRESHOLD = 20;
+	private static final int THRESHOLD = 200;
 	
 	private Tweet prototype;
 	private List<Tweet> tweets = new ArrayList<Tweet>();
 	private ClusterType type;
+	private Calendar lastUpdTime;
 	
 	public Cluster() {
 	}
@@ -46,10 +45,11 @@ public class Cluster {
 			addedTweetCount = 0;
 			reCalculatePrototype();
 		}
+		this.lastUpdTime = Calendar.getInstance();
 	}
 
 	/**
-	 * Tweets'in read-only kopyas›yla çal›ﬂacak ﬂekilde düzelt
+	 * Tweets'in read-only kopyasiyla calisacak sekilde duzelt
 	 */
 	private void reCalculatePrototype() {
 		
@@ -62,7 +62,7 @@ public class Cluster {
 				double jaccardSimilarity = t1.jaccardSimilarity(t2);
 				similarity[i][j] = jaccardSimilarity;
 				similarity[j][i] = jaccardSimilarity;
-				System.out.println(i+"-"+j+"="+jaccardSimilarity);
+				//System.out.println(i+"-"+j+"="+jaccardSimilarity);
 			}
 		}
 		
@@ -83,6 +83,12 @@ public class Cluster {
 		prototype = tweets.get(maxI);
 		
 	}
+
+	public Calendar getLastUpdTime() {
+		return lastUpdTime;
+	}
+
+	
 	
 	
 }
