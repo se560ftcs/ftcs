@@ -122,6 +122,9 @@ public class Tweet {
 				.replaceAll("#\\S*", "")
 				.replaceAll(" http\\S*", "")
 				.replaceAll("\\p{P}", "")
+				.replaceAll("GOT\\S*", "***")
+				.replaceAll("SIK\\S*", "***")
+				.replaceAll("KOY\\S*", "***")
 				
 				;
 		return txt;
@@ -217,6 +220,18 @@ public class Tweet {
 	
 	public String getDescription() {
 		return this.text;
+	}
+	
+	public String getDescriptionUtf() {
+		String str = this.getDescription();
+		for (int i=0;i<strs.length/2;i++) {
+			String from = strs[i*2];
+			String to = strs[i*2+1];
+			while (str.contains(from)) {
+				str = str.replace(from, to);
+			}
+		}
+		return str;
 	}
 
 }

@@ -38,6 +38,12 @@
   		<param-name>secret</param-name>
   		<param-value>r6Q5lrHpIv3JdsmA5kcdKOxmMCeKsh1BO6X3xsa3HflOr</param-value>
   	</init-param>
+  	
+  	<init-param>
+  		<param-name>live</param-name>
+  		<param-value>1</param-value>
+  	</init-param>
+  	
 
    	<load-on-startup>1</load-on-startup>
   </servlet>

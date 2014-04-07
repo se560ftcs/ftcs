@@ -22,8 +22,8 @@
 <script type="text/javascript" >
 
 var bleed = 100,
-    width = 400,
-    height = 350;
+    width = 1200,
+    height = 1050;
 
 var pack = d3.layout.pack()
     .sort(null)
@@ -36,7 +36,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(0," + -bleed + ")");
 
-d3.json("/resource/sampleData.json", function(error, json) {
+d3.json("http://localhost:8080/list/cluster", function(error, json) {
   var node = svg.selectAll(".node")
       .data(pack.nodes(flatten(json))
         .filter(function(d) { return !d.children; }))

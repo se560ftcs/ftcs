@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.collect.Lists;
 import com.metu.se560.services.ClusteringService;
+import com.metu.se560.services.FileBasedTwitterService;
 import com.metu.se560.services.TwitterService;
 
 import edu.metu.se560.file.RollingFileQueueFeeder;
@@ -65,20 +66,26 @@ public class MainServiceServlet extends HttpServlet {
 		String consumerSecret = this.getInitParameter("consumerSecret");
 		String token = this.getInitParameter("token");
 		String secret = this.getInitParameter("secret");
+		String liveTweets = this.getInitParameter("live");
 		
 		String filePath = "/temp";
 		String filePrefix = "Tweets";
 		
-			
-        TwitterService twitterService = new TwitterService(parameters, filePrefix, consumerKey, consumerSecret, token, secret);
-        
-        BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
-    	RollingFileQueueFeeder f = new RollingFileQueueFeeder(queue, 100, filePath, filePrefix, twitterService.getSeRollingFileWriter());
-    	new Thread(f).start();
-
+	    BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
+	    if (liveTweets.equals("1")) {
+	        TwitterService twitterService = new TwitterService(parameters, filePrefix, consumerKey, consumerSecret, token, secret);
+	        new Thread(twitterService).start();
+	        
+	    	RollingFileQueueFeeder f = new RollingFileQueueFeeder(queue, 100, filePath, filePrefix, twitterService.getSeRollingFileWriter());
+	    	new Thread(f).start();
+	    } else {
+		
+	    	FileBasedTwitterService twitterService = new FileBasedTwitterService(queue);
+	    	new Thread(twitterService).start();
+	    }
+	    
         ClusteringService clusteringService = new ClusteringService(queue, 10);
         new Thread(clusteringService).start();
-        new Thread(twitterService).start();
 	}
 
 	private List<String> readerToStr(Reader paramReader) throws IOException {

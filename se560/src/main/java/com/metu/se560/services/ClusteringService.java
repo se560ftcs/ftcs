@@ -38,7 +38,7 @@ public class ClusteringService extends Thread {
 					addToClustering(tweet);
 				}
 				//System.out.println("Added tweet to clustering: "+ line);
-				Thread.sleep(1); //yava������������������ ilerlesin g������������������relim
+				Thread.sleep(1); //yava������������������������������������������������������ ilerlesin g������������������������������������������������������relim
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class ClusteringService extends Thread {
 			}
 		}
 		initOk = true;
-	    //En yak������������������n cluster'a ekle
+	    //En yak������������������������������������������������������n cluster'a ekle
 		int maxSimilarityIndex=-1;
 	    double maxSimilarity=0;
 	    
@@ -104,7 +104,7 @@ public class ClusteringService extends Thread {
 			if (c.getPrototype() != null) {
 			result.append(
 					"{\"name\": \""+
-							c.getPrototype().getDescription()
+							c.getPrototype().getDescriptionUtf()
 							+"\", \"size\": "+
 							c.getTweets().size()
 							+"}"
